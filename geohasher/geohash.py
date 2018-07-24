@@ -1,7 +1,9 @@
 """
-A simple implementation of geohash based on:
-    * http://en.wikipedia.org/wiki/Geohash
-    * https://www.movable-type.co.uk/scripts/geohash.html
+Geohash encoding/decoding and associated functions
+(c) Chris Veness 2014-2016 / MIT Licence
+https://www.movable-type.co.uk/scripts/geohash.html
+
+http://en.wikipedia.org/wiki/Geohash
 """
 from __future__ import division
 from collections import namedtuple
@@ -226,7 +228,7 @@ def adjacent(geohash, direction):
     typ = len(geohash) % 2
 
     # check for edge-cases which don't share common prefix
-    if last_char not in border[direction][typ] and parent:
+    if last_char in border[direction][typ] and parent:
         parent = adjacent(parent, direction)
 
     index = neighbour[direction][typ].index(last_char)

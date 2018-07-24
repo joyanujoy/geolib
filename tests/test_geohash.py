@@ -35,3 +35,15 @@ def test_neighbours():
     neighbours.ne == 'gcpuypm'
     neighbours.se == 'gcpuynv'
     neighbours.sw == 'gcpuyng'
+
+
+def test_neighbours_london():
+    neighbours = geohash.neighbours('gcpvn0c')
+    neighbours.n == 'gcpvn11'
+    neighbours.s == 'gcpvn09'
+    neighbours.e == 'gcpvn0f'
+    neighbours.w == 'gcpvn0b'
+    neighbours.nw == 'gcpvn10'
+    neighbours.ne == 'gcpvn14'
+    neighbours.se == 'gcpvn08'
+    neighbours.sw == 'gcpvn0d'
