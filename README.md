@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/joyanujoy/geohasher.svg?branch=master)](https://travis-ci.org/joyanujoy/geohasher)
+
 # Geohasher
 A python library for geohash encoding, decoding and finding neighbour cells. This is a python port of [Chris Veness' javascript implementation](https://www.movable-type.co.uk/scripts/geohash.html).
 
