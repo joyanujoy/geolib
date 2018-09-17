@@ -12,6 +12,7 @@ sphinx-autobuild = "*"
 [packages]
 future = "*"
 pytest = "*"
+pathlib = "*"
 
 [requires]
 python_version = "3.7"
