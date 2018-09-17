@@ -127,7 +127,7 @@ def decode(geohash):
 
 def encode(lat, lon, precision):
     """
-    Encode latitude, longitude to a geohash. Infers precision if not given.
+    Encode latitude, longitude to a geohash.
 
     Params
     ------
