@@ -8,6 +8,7 @@ future = "*"
 pytest = "*"
 sphinx = "*"
 sphinx-autobuild = "*"
+"pathlib2" = "*"
 
 [packages]
 future = "*"
