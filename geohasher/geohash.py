@@ -130,7 +130,7 @@ def decode(geohash):
 
 def encode(lat, lon, precision):
     """
-    Encode latitude, longitude to a geohash. Infers precision if not given.
+    Encode latitude, longitude to a geohash.
 
     :param lat: latitude, a number or string that can be converted to decimal.
          Ideally pass a string to avoid floating point uncertainties.
