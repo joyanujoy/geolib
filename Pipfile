@@ -6,6 +6,8 @@ name = "pypi"
 [dev-packages]
 future = "*"
 pytest = "*"
+sphinx = "*"
+sphinx-autobuild = "*"
 
 [packages]
 future = "*"
