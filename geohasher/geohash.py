@@ -59,7 +59,6 @@ def bounds(geohash):
     :param geohash: string, cell that bounds are required of
 
     :returns: a named tuple of namedtuples Bounds(sw(lat, lon), ne(lat, lon)). 
-    e.g., southwest_lat = b.sw.lat
     
     >>> bounds = geohash.bounds('ezs42')
     >>> bounds
