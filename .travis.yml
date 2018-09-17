@@ -7,8 +7,7 @@ python:
   - "3.6"
   - "3.7"
 # command to install dependencies
-install:
-    install: "make"
+install: "make"
 # command to run tests
 script:
   - make test
