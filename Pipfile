@@ -9,6 +9,7 @@ pytest = "*"
 sphinx = "*"
 sphinx-autobuild = "*"
 "pathlib2" = "*"
+scandir = "*"
 
 [packages]
 future = "*"
