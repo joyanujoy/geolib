@@ -49,20 +49,24 @@ def _fixedpoint(num, bound_max, bound_min):
 
 def bounds(geohash):
     """
-    Returns SW/NE latitude/longitude bounds of a specified geohash.
-        |      .| NE
-        |    .  |
-        |  .    |
-     SW |.      |
+    Returns SW/NE latitude/longitude bounds of a specified geohash::
 
-     Params
-     ----------
-     geohash: string, cell that bounds are required of
+            |      .| NE
+            |    .  |
+            |  .    |
+         SW |.      |
 
-     Returns
-     -------
-     Named Tuple of namedtuples Bounds(sw(lat, sw.lon), ne(lat, lon)). e.g.,
-     southwest_lat = b.sw.lat
+    :param geohash: string, cell that bounds are required of
+
+    :returns: a named tuple of namedtuples Bounds(sw(lat, lon), ne(lat, lon)). 
+    e.g., southwest_lat = b.sw.lat
+    
+    >>> bounds = geohash.bounds('ezs42')
+    >>> bounds
+    >>> ((42.583, -5.625), (42.627, -5.58)))
+    >>> bounds.sw.lat
+    >>> 42.583
+
     """
     geohash = geohash.lower()
 
@@ -106,13 +110,12 @@ def decode(geohash):
     Decode geohash to latitude/longitude. Location is approximate centre of the
     cell to reasonable precision.
 
-    Params
-    ------
-    geohash: string, cell that bounds are required of
+    :param geohash: string, cell that bounds are required of
 
-    Returns
-    ------
-    Namedtuple (lat, lon) with lat, lon as properties
+    :returns: Namedtuple (lat, lon) with lat, lon as properties
+
+    >>> geohash.decode('gkkpfve')
+    >>> (70.2995, -27.9993)
     """
     (lat_min, lon_min), (lat_max, lon_max) = bounds(geohash)
 
@@ -129,19 +132,18 @@ def encode(lat, lon, precision):
     """
     Encode latitude, longitude to a geohash. Infers precision if not given.
 
-    Params
-    ------
-    lat: latitude, a number or string that can be converted to decimal.
+    :param lat: latitude, a number or string that can be converted to decimal.
          Ideally pass a string to avoid floating point uncertainties.
          It will be converted to decimal.
-    lon: longitude, a number or string that can be converted to decimal.
+    :param lon: longitude, a number or string that can be converted to decimal.
          Ideally pass a string to avoid floating point uncertainties.
          It will be converted to decimal.
-    precision: integer, 1 to 12 represeting geohash levels upto 12.
+    :param precision: integer, 1 to 12 represeting geohash levels upto 12.
 
-    Returns
-    -------
-    geohash as string.
+    :returns: geohash as string.
+
+    >>> geohash.encode('70.2995', '-27.9993', 7)
+    >>> gkkpfve
     """
     lat = decimal.Decimal(lat)
     lon = decimal.Decimal(lon)
@@ -190,14 +192,13 @@ def adjacent(geohash, direction):
     """
     Determines adjacent cell in given direction.
 
-    Params
-    ------
-    geohash: cell to which adjacent cell is required
-    direction: direction from geohash, string, one of n, s, e, w
+    :param geohash: cell to which adjacent cell is required
+    :param direction: direction from geohash, string, one of n, s, e, w
 
-    Returns
-    -------
-    geohash of adjacent cell
+    :returns: geohash of adjacent cell
+
+    >>> geohash.adjacent('gcpuyph', 'ne')
+    >>> gcpvn14
     """
     if not geohash:
         raise ValueError('Invalid geohash')
@@ -237,19 +238,21 @@ def adjacent(geohash, direction):
 
 def neighbours(geohash):
     """
-    Returns all 8 adjacent cells to specified geohash
+    Returns all 8 adjacent cells to specified geohash::
 
-    | nw | n | ne |
-    |  w | * | e  |
-    | sw | s | se |
+        | nw | n | ne |
+        |  w | * | e  |
+        | sw | s | se |
 
-    Params
-    ------
-    geohash: string, geohash neighbours are required of
+    :param geohash: string, geohash neighbours are required of
 
-    Returns
-    -------
-    neighbours as namedtuple of geohashes with properties n,ne,e,se,s,sw,w,nw
+    :returns: neighbours as namedtuple of geohashes with properties n,ne,e,se,s,sw,w,nw
+
+    >>> neighbours = geohash.neighbours('gcpuyph')
+    >>> neighbours
+    >>> ('gcpvn11', 'gcpvn14', 'gcpvn0f', 'gcpvn08', 'gcpvn09', 'gcpvn0d', 'gcpvn0b', 'gcpvn10')
+    >>> neighbours.ne
+    >>> gcpvn14
     """
     n = adjacent(geohash, 'n')
     ne = adjacent(n, 'e')
