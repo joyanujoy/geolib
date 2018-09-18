@@ -15,8 +15,8 @@ def test_decode():
     decimal.getcontext().prec = 7
     expected = (decimal.Decimal(42.605), decimal.Decimal(-5.603))
     rel = decimal.Decimal('1e-3')
-    assert geohash.decode('ezs42') == pytest.approx(expected,
-                                                    rel=rel)
+    lat, lon = geohash.decode('ezs42')
+    assert (lat, lon) == pytest.approx(expected, rel=rel)
 
 
 def test_encode():
