@@ -111,7 +111,7 @@ def decode(geohash):
 
     :param geohash: string, cell that bounds are required of
 
-    :returns: Namedtuple (lat, lon) with lat, lon as properties
+    :returns: Namedtuple with decimal lat and lon as properties.
 
     >>> geohash.decode('gkkpfve')
     >>> (70.2995, -27.9993)
@@ -196,8 +196,8 @@ def adjacent(geohash, direction):
 
     :returns: geohash of adjacent cell
 
-    >>> geohash.adjacent('gcpuyph', 'ne')
-    >>> gcpvn14
+    >>> geohash.adjacent('gcpuyph', 'n')
+    >>> gcpuypk
     """
     if not geohash:
         raise ValueError('Invalid geohash')
@@ -249,9 +249,9 @@ def neighbours(geohash):
 
     >>> neighbours = geohash.neighbours('gcpuyph')
     >>> neighbours
-    >>> ('gcpvn11', 'gcpvn14', 'gcpvn0f', 'gcpvn08', 'gcpvn09', 'gcpvn0d', 'gcpvn0b', 'gcpvn10')
+    >>> ('gcpuypk', 'gcpuypm', 'gcpuypj', 'gcpuynv', 'gcpuynu', 'gcpuyng', 'gcpuyp5', 'gcpuyp7')
     >>> neighbours.ne
-    >>> gcpvn14
+    >>> gcpuypm
     """
     n = adjacent(geohash, 'n')
     ne = adjacent(n, 'e')

@@ -10,6 +10,9 @@ sphinx = "*"
 sphinx-autobuild = "*"
 "pathlib2" = "*"
 scandir = "*"
+setuptools = "*"
+wheel = "*"
+twine = "*"
 
 [packages]
 future = "*"
