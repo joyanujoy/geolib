@@ -94,7 +94,9 @@ html_theme = 'alabaster'
 html_theme_options = {
     'github_user': 'joyanujoy',
     'github_repo': 'geohasher',
-    'github_button': True
+    'github_button': True,
+    'github_type': 'star',
+    'analytics_id': 'UA-126092648-1'
 }
 
 
