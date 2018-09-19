@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/joyanujoy/geohasher.svg?branch=master)](https://travis-ci.org/joyanujoy/geohasher)
+[![Build Status](https://travis-ci.org/joyanujoy/geohasher.svg?branch=master)](https://travis-ci.org/joyanujoy/geohasher) ![python 2.7|3.4|3.5|3.6|3.7](https://img.shields.io/badge/python-2.7|3.4|3.5|3.6|3.7-blue.svg)
 
 # Geohasher
 A python library for geohash encoding, decoding and finding neighbour cells. This is a python port of [Chris Veness' javascript implementation](https://www.movable-type.co.uk/scripts/geohash.html).
@@ -44,3 +44,6 @@ or
     >>> ((42.583, -5.625), (42.627, -5.58)))
     >>> bounds.sw.lat 
     >>> 42.583
+
+## Documentation
+   [Geohasher readthedocs](https://geohasher.readthedocs.io/en/latest/)
