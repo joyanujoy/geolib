@@ -1,6 +1,6 @@
 import pytest
 import decimal
-from geohasher import geohash
+from geolib import geohash
 
 
 def test_bounds():

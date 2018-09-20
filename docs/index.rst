@@ -1,14 +1,14 @@
-Welcome to Geohasher's documentation!
+Welcome to Geolib's documentation!
 =====================================
 .. image:: https://img.shields.io/badge/python-2.7|3.4|3.5|3.6|3.7-blue.svg
-    :target: https://pypi.org/project/geohasher/
+    :target: https://pypi.org/project/geolib/
 
 .. :toctree::
 
-geohasher.geohash
+geolib.geohash
 ------------------------
 
-.. automodule:: geohasher.geohash
+.. automodule:: geolib.geohash
     :members:
     :undoc-members:
     :show-inheritance:
@@ -17,7 +17,7 @@ geohasher.geohash
 Module contents
 ---------------
 
-.. automodule:: geohasher
+.. automodule:: geolib
     :members:
     :undoc-members:
     :show-inheritance:

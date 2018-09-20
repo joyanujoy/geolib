@@ -12,14 +12,14 @@ test_requirements = [
 ]
 
 setuptools.setup(
-    name="Geohasher",
-    version="1.0.4",
+    name="geolib",
+    version="1.0.5",
     author="Anu Joy",
     author_email="oss@cartographix.org",
     description="A library for geohash encoding, decoding and associated functions",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/joyanujoy/geohasher",
+    url="https://github.com/joyanujoy/geolib",
     packages=setuptools.find_packages(),
     python_requires='>=2.7,!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*',
     install_requires=requires,

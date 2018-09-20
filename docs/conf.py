@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Geohasher documentation build configuration file, created by
+# Geolib documentation build configuration file, created by
 # sphinx-quickstart on Mon Sep 17 13:13:06 2018.
 #
 # This file is execfile()d with the current directory set to its
@@ -48,7 +48,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'Geohasher'
+project = u'Geolib'
 copyright = u'2018, Anu Joy'
 author = u'Anu Joy'
 
@@ -93,7 +93,7 @@ html_theme = 'alabaster'
 #
 html_theme_options = {
     'github_user': 'joyanujoy',
-    'github_repo': 'geohasher',
+    'github_repo': 'geolib',
     'github_button': True,
     'github_type': 'star',
     'analytics_id': 'UA-126092648-1'
@@ -109,7 +109,7 @@ html_static_path = ['_static']
 # -- Options for HTMLHelp output ------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'Geohasherdoc'
+htmlhelp_basename = 'Geolibdoc'
 
 
 # -- Options for LaTeX output ---------------------------------------------
@@ -136,7 +136,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'Geohasher.tex', u'Geohasher Documentation',
+    (master_doc, 'Geolib.tex', u'Geolib Documentation',
      u'Anu Joy', 'manual'),
 ]
 
@@ -146,7 +146,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'geohasher', u'Geohasher Documentation',
+    (master_doc, 'geolib', u'Geolib Documentation',
      [author], 1)
 ]
 
@@ -157,8 +157,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'Geohasher', u'Geohasher Documentation',
-     author, 'Geohasher', 'One line description of project.',
+    (master_doc, 'Geolib', u'Geolib Documentation',
+     author, 'Geolib', 'One line description of project.',
      'Miscellaneous'),
 ]
 

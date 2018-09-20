@@ -1,16 +1,16 @@
-[![Build Status](https://travis-ci.org/joyanujoy/geohasher.svg?branch=master)](https://travis-ci.org/joyanujoy/geohasher) ![python 2.7|3.4|3.5|3.6|3.7](https://img.shields.io/badge/python-2.7|3.4|3.5|3.6|3.7-blue.svg)
+[![Build Status](https://travis-ci.org/joyanujoy/geohasher.svg?branch=master)](https://travis-ci.org/joyanujoy/geolib) ![python 2.7|3.4|3.5|3.6|3.7](https://img.shields.io/badge/python-2.7|3.4|3.5|3.6|3.7-blue.svg)[![Downloads](https://pepy.tech/badge/geolib)](https://pepy.tech/project/geolib)
 
-# Geohasher
+# Geolib
 A python library for geohash encoding, decoding and finding neighbour cells. This is a python port of [Chris Veness' javascript implementation](https://www.movable-type.co.uk/scripts/geohash.html).
 
 [Wikipedia reference](http://en.wikipedia.org/wiki/Geohash)
 ## Installation
-```pipenv install geohasher```
+```pipenv install geolib```
 or
-```pip install geohasher```
+```pip install geolib```
 ## Usage
 
-    from geohasher import geohash
+    from geolib import geohash
    ### Encode a latitude, longtiude to geohash
     geohash.encode(latitude, longitude, precision)
     >>> geohash.encode('70.2995', '-27.9993', 7)
@@ -46,4 +46,4 @@ or
     >>> 42.583
 
 ## Documentation
-   [Geohasher readthedocs](https://geohasher.readthedocs.io/en/latest/)
+   [Geolib readthedocs](https://geolib.readthedocs.io/en/latest/)
