@@ -13,7 +13,7 @@ test_requirements = [
 
 setuptools.setup(
     name="geolib",
-    version="1.0.5",
+    version="1.0.6",
     author="Anu Joy",
     author_email="oss@cartographix.org",
     description="A library for geohash encoding, decoding and associated functions",
