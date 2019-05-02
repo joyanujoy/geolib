@@ -19,6 +19,7 @@ pathlib = "*"
 sphinx = "==1.8.0"
 sphinx-autobuild = "==0.7.1"
 tornado = "==5.1.1"
+more-itertools = "==5.0.0"
 
 [requires]
 python_version = "3.7"
