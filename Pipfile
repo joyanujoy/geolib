@@ -6,8 +6,6 @@ name = "pypi"
 [dev-packages]
 future = "*"
 pytest = "*"
-sphinx = "*"
-sphinx-autobuild = "*"
 "pathlib2" = "*"
 scandir = "*"
 setuptools = "*"
@@ -18,6 +16,8 @@ twine = "*"
 future = "*"
 pytest = "*"
 pathlib = "*"
+sphinx = "==1.8.0"
+sphinx-autobuild = "==0.7.1"
 
 [requires]
 python_version = "3.7"

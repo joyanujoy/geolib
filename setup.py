@@ -21,11 +21,12 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/joyanujoy/geolib",
     packages=setuptools.find_packages(),
-    python_requires='>=2.7,>=3.6,!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*',
+    python_requires='>=2.7,!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*',
     install_requires=requires,
     tests_require=test_requirements,
     classifiers=[
         "Programming Language :: Python :: 2.7",
+        "Programming Language :: Python :: 3.4",
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
         "License :: OSI Approved :: MIT License",
