@@ -8,7 +8,11 @@ requires = [
 ]
 test_requirements = [
     'future',
-    'pytest'
+    'pytest',
+    'pytest-coverage',
+]
+doc_requirements = [
+    'sphinx'
 ]
 
 setuptools.setup(
@@ -24,11 +28,16 @@ setuptools.setup(
     python_requires='>=2.7,!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*',
     install_requires=requires,
     tests_require=test_requirements,
+    extras_require={
+        'tests': test_requirements,
+        'doc': doc_requirements,
+    },
     classifiers=[
         "Programming Language :: Python :: 2.7",
-        "Programming Language :: Python :: 3.4",
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
         "Development Status :: 5 - Production/Stable",

@@ -1,0 +1,28 @@
+[tool.tox]
+legacy_tox_ini = """
+[tox]
+envlist = doc,py36,py37,py38,py39,coverage
+
+[testenv]
+commands =
+    pip install --editable .[tests]
+    pytest {posargs}
+
+[testenv:doc]
+commands =
+    pip install --editable .[doc]
+    sphinx-build docs build/sphinx/html
+
+[testenv:coverage]
+commands =
+    pip install --editable .[tests]
+    coverage erase
+    pytest --cov {posargs}
+    coverage html
+"""
+
+[tool.coverage.run]
+source = [
+    "tests",
+    "geolib",
+]
