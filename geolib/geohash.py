@@ -11,18 +11,18 @@ from builtins import range
 import decimal
 import math
 
-base32 = '0123456789bcdefghjkmnpqrstuvwxyz'
+base32 = "0123456789bcdefghjkmnpqrstuvwxyz"
 
 
 def _indexes(geohash):
     if not geohash:
-        raise ValueError('Invalid geohash')
+        raise ValueError("Invalid geohash")
 
     for char in geohash:
         try:
             yield base32.index(char)
         except ValueError:
-            raise ValueError('Invalid geohash')
+            raise ValueError("Invalid geohash")
 
 
 def _fixedpoint(num, bound_max, bound_min):
@@ -40,8 +40,7 @@ def _fixedpoint(num, bound_max, bound_min):
     A decimal
     """
     try:
-        decimal.getcontext().prec = math.floor(2-math.log10(bound_max
-                                                            - bound_min))
+        decimal.getcontext().prec = math.floor(2 - math.log10(bound_max - bound_min))
     except ValueError:
         decimal.getcontext().prec = 12
     return decimal.Decimal(num)
@@ -96,11 +95,11 @@ def bounds(geohash):
                     lat_max = lat_mid
             even_bit = not even_bit
 
-    SouthWest = namedtuple('SouthWest', ['lat', 'lon'])
-    NorthEast = namedtuple('NorthEast', ['lat', 'lon'])
+    SouthWest = namedtuple("SouthWest", ["lat", "lon"])
+    NorthEast = namedtuple("NorthEast", ["lat", "lon"])
     sw = SouthWest(lat_min, lon_min)
     ne = NorthEast(lat_max, lon_max)
-    Bounds = namedtuple('Bounds', ['sw', 'ne'])
+    Bounds = namedtuple("Bounds", ["sw", "ne"])
     return Bounds(sw, ne)
 
 
@@ -123,7 +122,7 @@ def decode(geohash):
 
     lat = _fixedpoint(lat, lat_max, lat_min)
     lon = _fixedpoint(lon, lon_max, lon_min)
-    Point = namedtuple('Point', ['lat', 'lon'])
+    Point = namedtuple("Point", ["lat", "lon"])
     return Point(lat, lon)
 
 
@@ -148,7 +147,7 @@ def encode(lat, lon, precision):
     lon = decimal.Decimal(lon)
 
     index = 0  # index into base32 map
-    bit = 0   # each char holds 5 bits
+    bit = 0  # each char holds 5 bits
     even_bit = True
     lat_min = -90
     lat_max = 90
@@ -156,7 +155,7 @@ def encode(lat, lon, precision):
     lon_max = 180
     ghash = []
 
-    while(len(ghash) < precision):
+    while len(ghash) < precision:
         if even_bit:
             # bisect E-W longitude
             lon_mid = (lon_min + lon_max) / 2
@@ -184,7 +183,7 @@ def encode(lat, lon, precision):
             bit = 0
             index = 0
 
-    return ''.join(ghash)
+    return "".join(ghash)
 
 
 def adjacent(geohash, direction):
@@ -200,26 +199,22 @@ def adjacent(geohash, direction):
     >>> gcpuypk
     """
     if not geohash:
-        raise ValueError('Invalid geohash')
-    if direction not in ('nsew'):
-        raise ValueError('Invalid direction')
+        raise ValueError("Invalid geohash")
+    if direction not in ("nsew"):
+        raise ValueError("Invalid direction")
 
     neighbour = {
-        'n': ['p0r21436x8zb9dcf5h7kjnmqesgutwvy',
-              'bc01fg45238967deuvhjyznpkmstqrwx'],
-        's': ['14365h7k9dcfesgujnmqp0r2twvyx8zb',
-              '238967debc01fg45kmstqrwxuvhjyznp'],
-        'e': ['bc01fg45238967deuvhjyznpkmstqrwx',
-              'p0r21436x8zb9dcf5h7kjnmqesgutwvy'],
-        'w': ['238967debc01fg45kmstqrwxuvhjyznp',
-              '14365h7k9dcfesgujnmqp0r2twvyx8zb'],
+        "n": ["p0r21436x8zb9dcf5h7kjnmqesgutwvy", "bc01fg45238967deuvhjyznpkmstqrwx"],
+        "s": ["14365h7k9dcfesgujnmqp0r2twvyx8zb", "238967debc01fg45kmstqrwxuvhjyznp"],
+        "e": ["bc01fg45238967deuvhjyznpkmstqrwx", "p0r21436x8zb9dcf5h7kjnmqesgutwvy"],
+        "w": ["238967debc01fg45kmstqrwxuvhjyznp", "14365h7k9dcfesgujnmqp0r2twvyx8zb"],
     }
 
     border = {
-        'n': ['prxz',     'bcfguvyz'],
-        's': ['028b',     '0145hjnp'],
-        'e': ['bcfguvyz', 'prxz'],
-        'w': ['0145hjnp', '028b'],
+        "n": ["prxz", "bcfguvyz"],
+        "s": ["028b", "0145hjnp"],
+        "e": ["bcfguvyz", "prxz"],
+        "w": ["0145hjnp", "028b"],
     }
 
     last_char = geohash[-1]
@@ -253,14 +248,13 @@ def neighbours(geohash):
     >>> neighbours.ne
     >>> gcpuypm
     """
-    n = adjacent(geohash, 'n')
-    ne = adjacent(n, 'e')
-    e = adjacent(geohash, 'e')
-    s = adjacent(geohash, 's')
-    se = adjacent(s, 'e')
-    w = adjacent(geohash, 'w')
-    sw = adjacent(s, 'w')
-    nw = adjacent(n, 'w')
-    Neighbours = namedtuple('Neighbours',
-                            ['n', 'ne', 'e', 'se', 's', 'sw', 'w', 'nw'])
+    n = adjacent(geohash, "n")
+    ne = adjacent(n, "e")
+    e = adjacent(geohash, "e")
+    s = adjacent(geohash, "s")
+    se = adjacent(s, "e")
+    w = adjacent(geohash, "w")
+    sw = adjacent(s, "w")
+    nw = adjacent(n, "w")
+    Neighbours = namedtuple("Neighbours", ["n", "ne", "e", "se", "s", "sw", "w", "nw"])
     return Neighbours(n, ne, e, se, s, sw, w, nw)
