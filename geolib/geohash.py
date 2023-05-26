@@ -25,26 +25,37 @@ def _indexes(geohash):
             raise ValueError('Invalid geohash')
 
 
-def _fixedpoint(num, bound_max, bound_min):
+class DecimalContextManager:
     """
-    Return given num with precision of 2 - log10(range)
-
-    Params
-    ------
-    num: A number
-    bound_max: max bound, e.g max latitude of a geohash cell(NE)
-    bound_min: min bound, e.g min latitude of a geohash cell(SW)
-
-    Returns
-    -------
-    A decimal
+    Manage Decimal context class
     """
-    try:
-        decimal.getcontext().prec = math.floor(2-math.log10(bound_max
-                                                            - bound_min))
-    except ValueError:
-        decimal.getcontext().prec = 12
-    return decimal.Decimal(num)
+    def __enter__(self):
+        self.decimal_context = decimal.getcontext().copy()
+        return self
+
+    def __exit__(self, exc_type, exc_value, traceback):
+        decimal.setcontext(self.decimal_context)
+
+    def fixedpoint(self, num, bound_max, bound_min):
+        """
+        Return given num with precision of 2 - log10(range)
+
+        Params
+        ------
+        num: A number
+        bound_max: max bound, e.g max latitude of a geohash cell(NE)
+        bound_min: min bound, e.g min latitude of a geohash cell(SW)
+
+        Returns
+        -------
+        A decimal
+        """
+        try:
+            decimal.getcontext().prec = math.floor(2-math.log10(bound_max
+                                                                - bound_min))
+        except ValueError:
+            decimal.getcontext().prec = 12
+        return decimal.Decimal(num)
 
 
 def bounds(geohash):
@@ -120,9 +131,9 @@ def decode(geohash):
 
     lat = (lat_min + lat_max) / 2
     lon = (lon_min + lon_max) / 2
-
-    lat = _fixedpoint(lat, lat_max, lat_min)
-    lon = _fixedpoint(lon, lon_max, lon_min)
+    with DecimalContextManager() as context_mgr:
+        lat = context_mgr.fixedpoint(lat, lat_max, lat_min)
+        lon = context_mgr.fixedpoint(lon, lon_max, lon_min)
     Point = namedtuple('Point', ['lat', 'lon'])
     return Point(lat, lon)
 
